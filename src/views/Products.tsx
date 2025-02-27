@@ -16,7 +16,20 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export default function Products() {
-    const products = useLoaderData() as Product[]
+    const products = useLoaderData() as Product[];
+    
+    if (!products) {
+        window.location.reload()
+        return (
+            <div className="fixed top-0 left-0 w-full h-full bg-white/95 flex justify-center items-center z-[1000]">
+                <div className="text-center p-8 bg-white rounded-xl shadow-lg">
+                    <div className="w-12 h-12 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin mb-5 mx-auto"></div>
+                    <p className="text-gray-800 text-lg mb-4">Cargando productos...</p>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <>
             <div className="flex justify-between">
