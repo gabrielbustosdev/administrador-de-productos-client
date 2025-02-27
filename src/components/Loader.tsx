@@ -30,6 +30,7 @@ const Loader: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     if (retryCount < MAX_RETRIES) {
       setRetryCount(prev => prev + 1);
       setError(`El servidor está iniciando... (Intento ${retryCount + 1}/${MAX_RETRIES})`);
+      console.log(error)
     } else {
       setError('El servidor está tardando más de lo esperado. Por favor intenta recargar la página.');
       setIsBackendReady(false);
